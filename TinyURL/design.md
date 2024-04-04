@@ -101,4 +101,4 @@ This high-level design provides a robust and scalable solution for generating un
 
 ## Final Design
 
-![screenshot](https://github.com/khansamad99/Adventure-Space/blob/main/frontend/src/images/image%20(1).png)
+![screenshot](https://github.com/khansamad99/Famous-System-Design-Problems-/blob/main/images/TinyURL/Screenshot%202024-04-04%20at%202.44.03%20PM.png)
