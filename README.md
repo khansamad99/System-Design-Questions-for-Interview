@@ -5,7 +5,7 @@ This repository contains a collection of well-known system design challenges tha
 ## Included Designs
 
 - [Design G-Drive](https://github.com/khansamad99/System-Design-Questions-for-Interview/blob/main/Design%20G-Drive/design.md)
-- [Design Insta/Twitter](https://github.com/khansamad99/System-Design-Questions-for-Interview/blob/main/Design%20Insta/Twitter/design.md)
+- [Design Instagram](https://github.com/khansamad99/System-Design-Questions-for-Interview/blob/main/Design%20Insta/Twitter/design.md)
 - [Design TinyURL](https://github.com/khansamad99/System-Design-Questions-for-Interview/blob/main/Design%20TinyURL/design.md)
 
 Each design is placed within its respective directory in this repository, containing markdown (.md) files that describe the problem statement, proposed solutions, database schemas, API designs, and other pertinent information related to the system's architecture.
