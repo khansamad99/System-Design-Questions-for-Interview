@@ -78,7 +78,7 @@
 
 
 ## High-Level System Design for Scaling:
-- Implement load balancers with standby to distribute load and avoid single points of failure.
+- Add load balancers with standby to distribute load and avoid single points of failure.
 - Use caching for frequently accessed data, such as user feeds.
 - Have multiple service instances for high availability.
 - Multiple database replicas for data redundancy.
