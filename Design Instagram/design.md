@@ -91,3 +91,8 @@
 ## Special Considerations:
 - Archiving strategies for posts and media for cost savings and performance.
 - Sharding strategies must account for high-traffic users to prevent system overloads.
+
+## Final Design
+
+![screenshot](https://github.com/khansamad99/Famous-System-Design-Problems-/blob/main/images/gdrive/Screenshot%202024-04-05%20at%204.41.23%20PM.png)
+
