@@ -141,4 +141,4 @@ This high-level design outlines the key components and considerations for buildi
 
 ## Final Design
 
-![screenshot](https://github.com/khansamad99/Famous-System-Design-Problems-/blob/main/images/gdrive/Screenshot 2024-04-05 at 4.41.23 PM.png)
+![screenshot](https://github.com/khansamad99/Famous-System-Design-Problems-/blob/main/images/gdrive/Screenshot%202024-04-05%20at%204.41.23%20PM.png)
