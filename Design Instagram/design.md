@@ -1,4 +1,4 @@
-# Design Instagram/Twitter/Facebook
+# System Design Instagram/Twitter/Facebook
 
 ## Functional Requirements
 - Create Posts/Upload posts

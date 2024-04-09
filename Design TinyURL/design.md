@@ -1,4 +1,4 @@
-# System Design Requirements for URL Shortening Service
+# System Design for URL Shortening Service
 
 ## Functional Requirements
 
