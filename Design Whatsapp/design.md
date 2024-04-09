@@ -96,14 +96,72 @@
 ```
 
 ### Architecture
-- Utilizes websockets for a persistent, bi-directional communication channel between clients and chat servers.
-- Employs load balancers and zookeeper for consistent hashing and to direct users to the correct chat server.
-- Incorporates heartbeats between clients and servers to manage connections and avoid Thundering Herd issues with reconnections.
+- We can microservices architecture since it will make it easier to horizontally scale and decouple our services. Each service will have ownership of its own data model
 
-### Operations
-- Sending messages involves the client, chat service, Kafka, Flink, and ultimately the HBase chats table.
-- Receiving messages uses Flink to identify which users need to receive a message and routes it through load balancers to the correct chat service and then to the client.
-- Historical messages are fetched from the HBase chats table, leveraging its efficient read capabilities.
+#### User Service
+- This is an HTTP-based service that handles user-related concerns such as authentication and user information.
 
-## Conclusion
-The design aims to handle the massive scale of global messaging apps by carefully choosing storage solutions, optimizing for both reads and writes, and using real-time data processing to manage message delivery efficiently.
+#### Chat Service
+- The chat service will use WebSockets and establish connections with the client to handle chat and group message-related functionality. We can also use cache to keep track of all the active connections sort of like sessions which will help us determine if the user is online or not.
+
+#### Notification Service
+- This service will simply send push notifications to the users. It will be discussed in detail separately.
+
+#### Presence Service
+- The presence service will keep track of the last seen status of all users.
+
+#### Media service
+- This service will handle the media (images, videos, files, etc.) uploads.
+
+### Real Time Messaging
+
+- #### Pull Model : 
+The client can periodically send an HTTP request to servers to check if there are any new messages. This can be achieved via something like Long polling.
+
+- #### Push Model :
+The client opens a long-lived connection with the server and once new data is available it will be pushed to the client. We can use WebSockets for this.
+
+The pull model approach is not scalable as it will create unnecessary request overhead on our servers and most of the time the response will be empty, thus wasting our resources. To minimize latency, using the push model with WebSockets is a better choice because then we can push data to the client once it's available without any delay given the connection is open with the client.
+
+
+### Last Scene
+- To implement the last seen functionality, we can use a heartbeat mechanism, where the client can periodically ping the servers indicating its liveness. This functionality will be handled by the presence service combined with Redis as our cache.
+
+### Data Partioning
+
+
+### Caching
+In a messaging application, we have to be careful about using cache as our users expect the latest data, but many users will be requesting the same messages, especially in a group chat. So, to prevent usage spikes from our resources we can cache older messages.
+
+Some group chats can have thousands of messages and sending that over the network will be really inefficient, to improve efficiency we can add pagination to our system APIs. This decision will be helpful for users with limited network bandwidth as they won't have to retrieve old messages unless requested.
+
+#### Which cache eviction policy to use?
+
+We can use solutions like Redis or Memcached and cache 20% of the daily traffic but what kind of cache eviction policy would best fit our needs?
+
+Least Recently Used (LRU) can be a good policy for our system. In this policy, we discard the least recently used key first.
+
+#### How to handle cache miss?
+
+Whenever there is a cache miss, our servers can hit the database directly and update the cache with the new entries.
+
+### Few Bottlenecks to consider
+
+"What if one of our services crashes?"
+"How will we distribute our traffic between our components?"
+"How can we reduce the load on our database?"
+"How to improve the availability of our cache?"
+"Wouldn't API Gateway be a single point of failure?"
+"How can we make our notification system more robust?"
+"How can we reduce media storage costs"?
+"Does chat service has too much responsibility?"
+To make our system more resilient we can do the following:
+
+Running multiple instances of each of our services.
+Introducing load balancers between clients, servers, databases, and cache servers.
+Using multiple read replicas for our databases.
+Multiple instances and replicas for our distributed cache.
+We can have a standby replica of our API Gateway.
+Exactly once delivery and message ordering is challenging in a distributed system, we can use a dedicated message broker such as Apache Kafka or NATS to make our notification system more robust.
+We can add media processing and compression capabilities to the media service to compress large files similar to Whatsapp which will save a lot of storage space and reduce cost.
+We can create a group service separate from the chat service to further decouple our services.
