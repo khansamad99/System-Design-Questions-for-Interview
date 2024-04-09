@@ -34,6 +34,7 @@
 
 ### Users Members
 - This table maps users and groups as multiple users can be a part of multiple groups (N:M relationship) and vice versa.
+
 | Field    | Type |
 |----------|------|
 | id       | uuid |
@@ -147,21 +148,21 @@ Whenever there is a cache miss, our servers can hit the database directly and up
 
 ### Few Bottlenecks to consider
 
-"What if one of our services crashes?"
-"How will we distribute our traffic between our components?"
-"How can we reduce the load on our database?"
-"How to improve the availability of our cache?"
-"Wouldn't API Gateway be a single point of failure?"
-"How can we make our notification system more robust?"
-"How can we reduce media storage costs"?
-"Does chat service has too much responsibility?"
-To make our system more resilient we can do the following:
+- "What if one of our services crashes?"
+- "How will we distribute our traffic between our components?"
+- "How can we reduce the load on our database?"
+- "How to improve the availability of our cache?"
+- "Wouldn't API Gateway be a single point of failure?"
+- "How can we make our notification system more robust?"
+- "How can we reduce media storage costs"?
+- "Does chat service has too much responsibility?"
+- To make our system more resilient we can do the following:
 
-Running multiple instances of each of our services.
-Introducing load balancers between clients, servers, databases, and cache servers.
-Using multiple read replicas for our databases.
-Multiple instances and replicas for our distributed cache.
-We can have a standby replica of our API Gateway.
-Exactly once delivery and message ordering is challenging in a distributed system, we can use a dedicated message broker such as Apache Kafka or NATS to make our notification system more robust.
-We can add media processing and compression capabilities to the media service to compress large files similar to Whatsapp which will save a lot of storage space and reduce cost.
-We can create a group service separate from the chat service to further decouple our services.
+- Running multiple instances of each of our services.
+- Introducing load balancers between clients, servers, databases, and cache servers.
+- Using multiple read replicas for our databases.
+- Multiple instances and replicas for our distributed cache.
+- We can have a standby replica of our API Gateway.
+- Exactly once delivery and message ordering is challenging in a distributed system, we can use a dedicated message broker such as Apache Kafka or NATS to make our notification system more robust.
+- We can add media processing and compression capabilities to the media service to compress large files similar to Whatsapp which will save a lot of storage space and reduce cost.
+- We can create a group service separate from the chat service to further decouple our services.
