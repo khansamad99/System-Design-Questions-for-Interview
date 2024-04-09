@@ -156,7 +156,7 @@ Whenever there is a cache miss, our servers can hit the database directly and up
 - "How can we make our notification system more robust?"
 - "How can we reduce media storage costs"?
 - "Does chat service has too much responsibility?"
-- To make our system more resilient we can do the following:
+### To make our system more resilient we can do the following:
 
 - Running multiple instances of each of our services.
 - Introducing load balancers between clients, servers, databases, and cache servers.
