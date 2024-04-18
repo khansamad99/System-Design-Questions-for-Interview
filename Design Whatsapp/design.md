@@ -166,3 +166,4 @@ Whenever there is a cache miss, our servers can hit the database directly and up
 - Exactly once delivery and message ordering is challenging in a distributed system, we can use a dedicated message broker such as Apache Kafka or NATS to make our notification system more robust.
 - We can add media processing and compression capabilities to the media service to compress large files similar to Whatsapp which will save a lot of storage space and reduce cost.
 - We can create a group service separate from the chat service to further decouple our services.
+
