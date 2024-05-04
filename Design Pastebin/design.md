@@ -85,3 +85,5 @@ The API flow for paste retrieval:
 - Replication: The metadata database and the file storage system can be replicated across multiple servers. This ensures that if one server fails, the other servers can still be used to access data.
 
 ## Final Design
+
+![screenshot](https://github.com/khansamad99/System-Design-Questions-for-Interview/blob/main/images/pastebin/Screenshot%202024-05-04%20at%205.26.16%20PM.png)
