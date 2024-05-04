@@ -71,7 +71,7 @@ The API flow for paste retrieval:
 ## Expiration
 - The owner of the file can set an expiration time for a file, after which it becomes    inaccessible and eventually deleted.
 - When a file is accessed, the system checks the expiration time. If the expiration time has passed, the system returns a 404 error. Otherwise, the system fetches the file and returns it to the user.
-- A background process periodically cleans up expired files from the storage system.
+- CleanUp Job - A background process periodically cleans up expired files from the storage system - metaDB and S3.
 
 ## Analytics
 
