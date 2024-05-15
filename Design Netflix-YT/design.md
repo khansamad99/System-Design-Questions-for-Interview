@@ -148,3 +148,8 @@ Here are the key points from the given text in a shortened format:
 
 9. Content Delivery Network (CDN):
 - Use CDN (Amazon CloudFront, Cloudflare) to increase content availability, reduce bandwidth costs, and serve static files.
+
+
+## Final Design
+
+![screenshot](https://github.com/khansamad99/System-Design-Questions-for-Interview/blob/main/images/youtube/Screenshot%202024-05-15%20at%2010.26.53%E2%80%AFPM.png)
