@@ -167,3 +167,6 @@ Whenever there is a cache miss, our servers can hit the database directly and up
 - We can add media processing and compression capabilities to the media service to compress large files similar to Whatsapp which will save a lot of storage space and reduce cost.
 - We can create a group service separate from the chat service to further decouple our services.
 
+## Final Design
+
+![screenshot](https://github.com/khansamad99/System-Design-Questions-for-Interview/blob/main/images/pastebin/Screenshot%202024-05-04%20at%205.26.16%20PM.png)
